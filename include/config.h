@@ -436,6 +436,17 @@
 	#define NUM_CAN_CHANNEL			 1
 	#define CONFIG_CANFD			 1
 
+#elif defined(BOARD_btt_u2c_v2)
+	#define USBD_PRODUCT_STRING_FS	 "U2C V2 gs_usb"
+	#define USBD_MANUFACTURER_STRING "BIGTREETECH"
+	#define DFU_INTERFACE_STRING_FS	 "U2C V2 firmware upgrade interface"
+
+	#define TIM2_CLOCK_SPEED		 64000000
+
+	#define CAN_CLOCK_SPEED			 40000000
+	#define NUM_CAN_CHANNEL			 1
+	#define CONFIG_CANFD			 1 /* required by m_can.c, FD itself unused */
+
 #elif defined(BOARD_budgetcan)
 	#define USBD_PRODUCT_STRING_FS	 "budgetcan gs_usb"
 	#define USBD_MANUFACTURER_STRING "budgetcan"
