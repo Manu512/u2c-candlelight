@@ -1,6 +1,6 @@
 # Firmware candleLight pour l'adaptateur BTT U2C V2 (Voron)
 
-État au 24/10/2026 : **en service sur la Voron** (flashé le 23/10 à 23:31, validé au banc MANU-FIXE puis sous
+État au 24/10/2026 : **en service sur la Voron** (flashé le 23/10 à 23:31, validé au banc sur PC puis sous
 charge sur la machine : 0 erreur CAN).
 
 ## Pourquoi
@@ -22,8 +22,7 @@ Le firmware BTT d'origine (`U2C_V2_STM32G0B1.bin`, janvier 2023, sans suite) :
 | Brochage U2C V2 | firmware BTT `bigtreetech/candleLight_fw`, branche `stm32g0_support`, commit `b1ecdd26` |
 | Ajout (ce dépôt) | `src/boards/g0b1-btt_u2c_v2.c`, bloc `BOARD_btt_u2c_v2` de `include/config.h`, cible CMake |
 
-Dépôt `gitlab.ewlm.fr/emmanuel/u2c-candlelight`, branche `btt-u2c-v2` : historique candleLight officiel, puis
-PR #139, puis le commit de la carte. `out/btt-u2c-v2.patch` reprend ce même diff (par rapport à `pr139`).
+Branche `btt-u2c-v2` de ce dépôt : historique candleLight officiel, puis PR #139, puis le commit de la carte. `out/btt-u2c-v2.patch` reprend ce même diff (par rapport à `pr139`).
 
 ## Ce qui change par rapport au firmware BTT
 
@@ -63,7 +62,7 @@ Paquets : `gcc-arm-none-eabi libnewlib-arm-none-eabi cmake dfu-util` (gcc 13.2.1
 - Adresses présentes dans le code : FDCAN2 `0x40006800`, GPIOB `0x50000400`, CRS `0x40006C00`.
   La seule référence à FDCAN1 est le diviseur partagé CKDIV du HAL, qui reste à sa valeur de reset (÷1).
 
-## Banc PC MANU-FIXE (fait le 23/10/2026)
+## Banc sur PC Windows 11 + WSL (fait le 23/10/2026)
 
 Mise en place :
 
@@ -73,7 +72,7 @@ Mise en place :
   `usbipd detach --busid 7-1` pour la rendre à Windows.
 - En DFU (0483:df11), Windows prenait le pilote Guillemot du joystick Thrustmaster (`GuiSTDFUDev`).
   Le pilote ST `stm32bootloader.inf` (oem25.inf, WinUSB) est forcé pour cette seule instance
-  `USB\VID_0483&PID_DF11\2046326F5841`, ce qui rend la carte visible par STM32CubeProgrammer.
+  `USB\VID_0483&PID_DF11\<numéro de série DFU>`, ce qui rend la carte visible par STM32CubeProgrammer.
 
 État de la puce lu en DFU : STM32G0B1 (0x467), chargeur ROM 0x011a, RDP niveau 0, aucune zone WRP ou PCROP,
 `nBOOT_SEL = 0` (démarrage piloté par la broche BOOT0).
