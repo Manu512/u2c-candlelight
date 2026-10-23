@@ -1,0 +1,6 @@
+candleLight_fw master : 85e5b3352db7f051aa879eeb71555dfce664c44c
+PR #139 (pr139)       : 8ae4a1cebd454486f31f7905285754ee59739841
+branche locale        : btt-u2c-v2 (modifications non commitées, voir btt-u2c-v2.patch)
+compilateur           : arm-none-eabi-gcc (15:13.2.rel1-2) 13.2.1 20231009
+cmake                 : cmake version 3.28.3
+date                  : 23/10/2026 23:11
